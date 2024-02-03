@@ -35,7 +35,7 @@ class ConstrainedDeviceAppTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
-		logging.info("Testing ConstrainedDeviceApp class...")
+		logging.info("Testing ConstrainedDeviceApp class by Omar...")
 		self.cda = ConstrainedDeviceApp()
 		
 	def setUp(self):
