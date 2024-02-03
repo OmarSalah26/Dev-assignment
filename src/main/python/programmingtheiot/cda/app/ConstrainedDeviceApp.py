@@ -14,6 +14,7 @@ import logging
 
 from time import sleep
 
+from programmingtheiot.cda.system.SystemPerformanceManager import SystemPerformanceManager
 logging.basicConfig(format = '%(asctime)s:%(name)s:%(levelname)s:%(message)s', level = logging.DEBUG)
 
 class ConstrainedDeviceApp():
@@ -62,6 +63,27 @@ class ConstrainedDeviceApp():
 		"""
 		logging.info("Parsing command line args...")
 
+class SystemPerformanceManager2(SystemPerformanceManager):
+	
+	def __init__(self):
+		logging.info("Initializing CDA...")
+		
+		self.sysPerfMgr = SystemPerformanceManager()
+	
+	def startApp(self):
+		logging.info("Starting CDA...")
+		
+		self.sysPerfMgr.startManager()
+		
+		logging.info("CDA started.")
+	
+	def stopApp(self, code: int):
+		logging.info("CDA stopping...")
+		
+		self.sysPerfMgr.stopManager()
+		
+		logging.info("CDA stopped with exit code %s.", str(code))	
+
 
 def main():
 	"""
@@ -70,13 +92,33 @@ def main():
 	Current implementation runs for 35 seconds then exits.
 	"""
 	cda = ConstrainedDeviceApp()
-	cda.startApp()
 	
-	# run for 10 seconds - this can be changed as needed
-	sleep(10)
+	#to start the app
+	
+	cda.startApp()
+	print("this is Omar code welcome in my app")
+	
+	# run for 65 seconds - this can be changed as needed
+	sleep(1)
+	print(	"after sleep 1 s")
 	
 	# optionally stop the app - this can be removed if needed
 	cda.stopApp(0)
+	
+	
+	
+	
+	spm=SystemPerformanceManager2()
+	
+	spm.startApp()
+	
+	sleep(1)
+	print(	"after sleep 1 s")
+	
+	spm.stopApp(0)
+	
+	
+	
 
 if __name__ == '__main__':
 	"""
